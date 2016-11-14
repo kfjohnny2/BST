@@ -1,48 +1,28 @@
-class Node {
+package rbt;
+
+public class Node {
 	
-	private Node father;
-	private Node left;
-	private Node right;
 	private int key;
+	private char color; // R for red, B for black, D for double black
 
-	Node(int key){
-		father = null;
-		left = null;
-		right = null;
+	public Node(int key, char color){
 		this.key = key;
+		this.color = color;
 	}
-
-	Node getFather() {
-		return father;
-	}
-
-	void setFather(Node father) {
-		this.father = father;
-	}
-
-	Node getLeft() {
-		return left;
-	}
-
-	void setLeft(Node left) {
-		this.left = left;
-	}
-
-	Node getRight() {
-		return right;
-	}
-
-	void setRight(Node right) {
-		this.right = right;
-	}
-
-	int getKey() {
+	
+	public int getKey() {
 		return key;
 	}
 	
-	void setKey(int key) {
+	public void setKey(int key) {
 		this.key = key;
 	}
 	
+	public char getColor(){
+		return color;
+	}
 	
+	public void setColor(char color) {
+		this.color = color;
+	}
 }
