@@ -5,7 +5,6 @@ public class RBT {
 	private Node root;
 	private RBT leftTree;
 	private RBT rightTree;
-	private RBT father;
 	
 // GETTERS AND SETTERS
 	
@@ -21,10 +20,6 @@ public class RBT {
 		return rightTree;
 	}
 
-	public RBT getFather() {
-		return father;
-	}
-
 	public void setRoot(Node root) {
 		this.root = root;
 	}
@@ -35,10 +30,6 @@ public class RBT {
 
 	public void setRightTree(RBT rightTree) {
 		this.rightTree = rightTree;
-	}
-
-	public void setFather(RBT father) {
-		this.father = father;
 	}
 
 // FUNCTIONS	
@@ -111,17 +102,42 @@ public class RBT {
 		
 	}
 	
-	// b is the right child of a
-	public void rotateLeft(RBT a, RBT b) {
+	// f is the father of a, b is the right child of a
+	public void rotateLeft(RBT f, RBT a, RBT b) {
+		if (f != null) {
+			if (f.leftTree == a)
+				f.leftTree = b;
+			else
+				f.rightTree = b;
+		}
+		
 		a.rightTree = b.leftTree;
 		b.leftTree = a;
 	}
 	
-	// b is the left child of a
-	public void rotateRight(RBT a, RBT b) {
+	// f is the father of a, b is the left child of a
+	public void rotateRight(RBT f, RBT a, RBT b) {
+		if (f != null) {
+			if (f.leftTree == a)
+				f.leftTree = b;
+			else
+				f.rightTree = b;
+		}
+		
 		a.leftTree = b.rightTree;
 		b.rightTree = a;
 	}
 
+	// f is the father of a, b is the right child of a, c is the left child of b
+	public void doubleRotateLeft(RBT f, RBT a, RBT b, RBT c) {
+		rotateRight(a,b,c);
+		rotateLeft(f,a,b);
+	}
+	
+	// f is the father of a, b is the left child of a, c is the right child of b
+	public void doubleRotateRight(RBT f, RBT a, RBT b, RBT c) {
+		rotateLeft(a,b,c);
+		rotateRight(f,a,b);
+	}
 }
 
