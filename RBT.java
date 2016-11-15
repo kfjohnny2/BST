@@ -76,8 +76,35 @@ public class RBT {
 			return leftTree.searchKey(key);
 	}
 	
-	public void insert(int key){
-		
+	public void insert(int key, char color){
+		root = new Node(key, color);
+		root.setLeft(root.getRight());
+		root.setRight(root.getParent);
+		root.setParent(null);
+
+		Node aux = root;
+		Node aux2 = null;
+
+		while(aux!=null){
+			aux2.setNode(aux);
+			if(root.getKey() < aux.getKey()){
+				aux.setNode(aux.getLeft());
+			} else if (root.getKey() > aux.getKey()){
+				aux.setNode(aux.getRight());
+			} else{
+				aux.setKey(key);
+				root.setNode(aux);
+				return;
+			}
+		}
+        if (root.getKey() <  aux2.getKey()){
+            aux2.setLeft(root);
+        }
+        else{
+            aux2.setRight(root);
+        }
+
+        root.setParent(aux2);
 	}
 	
 	public void remove(int key){
@@ -95,5 +122,6 @@ public class RBT {
 		a.leftTree = b.rightTree;
 		b.rightTree = a;
 	}
+
 }
 
