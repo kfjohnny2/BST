@@ -3,14 +3,14 @@ package rbt;
 public class Node {
 	
 	private int key;
-	private char color; // R for red, B for black, D for double black
-    private Node left, right, parent;
+	private char color; // V for red, N for black, D for double black
+	private Node left;
+	private Node right;
 
 	public Node(int key, char color){
 		this.key = key;
 		this.color = color;
-        this.left = right = parent = nulls;
-        color = RED;
+		left = right = null;
 	}
 	
 	public int getKey() {
@@ -29,25 +29,19 @@ public class Node {
 		this.color = color;
 	}
 
-	public Node getLeft(){
-		return this.left;
+	public Node getLeft() {
+		return left;
 	}
 
-	public void setLeft(Node left){
+	public void setLeft(Node left) {
 		this.left = left;
 	}
-	public Node getRight(){
-		return this.right;
+
+	public Node getRight() {
+		return right;
 	}
 
-	public void setRight(Node right){
+	public void setRight(Node right) {
 		this.right = right;
-	}
-	public Node getParent(){
-		return this.parent;
-	}
-
-	public void setParent(Node parent){
-		this.parent = parent;
 	}
 }
